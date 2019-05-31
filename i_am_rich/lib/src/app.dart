@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
         body: Center(
           child: Image(
-            image: NetworkImage('https://www.w3schools.com/w3css/img_lights.jpg'),
+            image: AssetImage("images/diamond.png"),
           ),
         ),
       ),
