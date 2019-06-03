@@ -13,8 +13,9 @@ class _BallState extends State<Ball> {
   final _rand = Random();
 
   void _askBall() {
-    final newBallNumber = _rand.nextInt(5);
-    print(newBallNumber);
+    setState(() {
+      _ballNumber = _rand.nextInt(5) + 1;
+    });
   }
 
   @override
