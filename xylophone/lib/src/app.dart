@@ -23,8 +23,10 @@ class XylophoneApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: getNoteButtons(),
           ),
         ),
@@ -39,11 +41,13 @@ class XylophoneApp extends StatelessWidget {
   }
 
   Widget _noteButton(MaterialColor color, String note) {
-    return FlatButton(
-      color: color,
-      onPressed: () {
-        playNoteHandler(note);
-      },
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          playNoteHandler(note);
+        },
+      ),
     );
   }
 }
