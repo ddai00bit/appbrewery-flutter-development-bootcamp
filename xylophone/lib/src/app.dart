@@ -27,20 +27,18 @@ class XylophoneApp extends StatelessWidget {
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: getNoteButtons(),
+            children: _buildKeys(),
           ),
         ),
       ),
     );
   }
 
-  List<Widget> getNoteButtons() {
-    return _notes.keys
-        .map((color) => _noteButton(color, _notes[color]))
-        .toList();
+  List<Widget> _buildKeys() {
+    return _notes.keys.map((color) => _buildKey(color, _notes[color])).toList();
   }
 
-  Widget _noteButton(MaterialColor color, String note) {
+  Widget _buildKey(Color color, String note) {
     return Expanded(
       child: FlatButton(
         color: color,
