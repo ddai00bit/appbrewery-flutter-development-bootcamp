@@ -23,6 +23,8 @@ class _QuizPageState extends State<QuizPage> {
     ),
   ];
 
+  int _questionNumber = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +37,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                _questions[_questionNumber].question,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
