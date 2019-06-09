@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quizzler/src/question.dart';
+import 'package:quizzler/src/quiz_brain.dart';
+
+final quizBrain = QuizBrain();
 
 class QuizPage extends StatefulWidget {
   @override
@@ -8,25 +10,10 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  final _questions = <Question>[
-    Question(
-      question: 'You can lead a cow down stairs but not up stairs.',
-      answer: false,
-    ),
-    Question(
-      question: 'Approximately one quarter of human bones are in the feet.',
-      answer: true,
-    ),
-    Question(
-      question: 'A slug\' blood is green.',
-      answer: true,
-    ),
-  ];
-
   int _questionNumber = 0;
 
   _handleUserAnswer(bool answer) {
-    final correctAnswer = _questions[_questionNumber].answer;
+    final correctAnswer = quizBrain.questions[_questionNumber].answer;
     if (answer == correctAnswer) {
       print('User got it right');
     } else {
@@ -50,7 +37,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                _questions[_questionNumber].question,
+                quizBrain.questions[_questionNumber].question,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
