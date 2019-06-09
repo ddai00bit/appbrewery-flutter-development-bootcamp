@@ -10,10 +10,8 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int _questionNumber = 0;
-
   _handleUserAnswer(bool answer) {
-    final correctAnswer = quizBrain.questions[_questionNumber].answer;
+    final correctAnswer = quizBrain.getQuestionAnswer();
     if (answer == correctAnswer) {
       print('User got it right');
     } else {
@@ -21,7 +19,7 @@ class _QuizPageState extends State<QuizPage> {
     }
 
     setState(() {
-      _questionNumber++;
+      quizBrain.getNextQuestion();
     });
   }
 
@@ -37,7 +35,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                quizBrain.questions[_questionNumber].question,
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
