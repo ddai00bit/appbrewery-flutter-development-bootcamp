@@ -25,6 +25,19 @@ class _QuizPageState extends State<QuizPage> {
 
   int _questionNumber = 0;
 
+  _handleUserAnswer(bool answer) {
+    final correctAnswer = _questions[_questionNumber].answer;
+    if (answer == correctAnswer) {
+      print('User got it right');
+    } else {
+      print('User got it wrong');
+    }
+
+    setState(() {
+      _questionNumber++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -59,7 +72,9 @@ class _QuizPageState extends State<QuizPage> {
                   fontSize: 20,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                _handleUserAnswer(true);
+              },
             ),
           ),
         ),
@@ -75,7 +90,9 @@ class _QuizPageState extends State<QuizPage> {
                   fontSize: 20,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                _handleUserAnswer(false);
+              },
             ),
           ),
         ),
