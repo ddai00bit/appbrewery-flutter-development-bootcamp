@@ -2,6 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class QuizPage extends StatelessWidget {
+  final _questions = <String>[
+    'You can lead a cow down stairs but not up stairs.',
+    'Approximately one quarter of human bones are in the feet.',
+    'A slug\' blood is green.',
+  ];
+
+  final _answers = <bool>[
+    false,
+    true,
+    true,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
