@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quizzler/src/question.dart';
 
 class QuizPage extends StatefulWidget {
   @override
@@ -7,16 +8,19 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  final _questions = <String>[
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\' blood is green.',
-  ];
-
-  final _answers = <bool>[
-    false,
-    true,
-    true,
+  final _questions = <Question>[
+    Question(
+      question: 'You can lead a cow down stairs but not up stairs.',
+      answer: false,
+    ),
+    Question(
+      question: 'Approximately one quarter of human bones are in the feet.',
+      answer: true,
+    ),
+    Question(
+      question: 'A slug\' blood is green.',
+      answer: true,
+    ),
   ];
 
   @override
