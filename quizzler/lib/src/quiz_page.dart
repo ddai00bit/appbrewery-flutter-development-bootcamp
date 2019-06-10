@@ -10,15 +10,23 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  final _scoreKeeper = <Icon>[];
+
   _handleUserAnswer(bool answer) {
     final correctAnswer = quizBrain.getQuestionAnswer();
-    if (answer == correctAnswer) {
-      print('User got it right');
-    } else {
-      print('User got it wrong');
-    }
 
     setState(() {
+      if (answer == correctAnswer) {
+        _scoreKeeper.add(Icon(
+          Icons.check,
+          color: Colors.green,
+        ));
+      } else {
+        _scoreKeeper.add(Icon(
+          Icons.close,
+          color: Colors.red,
+        ));
+      }
       quizBrain.getNextQuestion();
     });
   }
@@ -81,6 +89,9 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
+        Row(
+          children: _scoreKeeper,
+        )
       ],
     );
   }
