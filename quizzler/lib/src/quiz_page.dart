@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizzler/src/quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
-final quizBrain = QuizBrain();
+final _quizBrain = QuizBrain();
 
 class QuizPage extends StatefulWidget {
   @override
@@ -13,22 +14,56 @@ class _QuizPageState extends State<QuizPage> {
   final _scoreKeeper = <Icon>[];
 
   _handleUserAnswer(bool answer) {
-    final correctAnswer = quizBrain.getQuestionAnswer();
+    if (_quizBrain.isFinished()) {
+      Alert(
+        context: context,
+        title: 'Finished!',
+        content: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Text(
+            'You\'ve reached the end of the quiz.',
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+        ),
+        buttons: [
+          DialogButton(
+            child: Text(
+              'CANCEL',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+            onPressed: () {
+              setState(() {
+                _scoreKeeper.clear();
+                _quizBrain.reset();
+                Navigator.pop(context);
+              });
+            },
+          ),
+        ],
+      ).show();
+    } else {
+      final correctAnswer = _quizBrain.getQuestionAnswer();
 
-    setState(() {
-      if (answer == correctAnswer) {
-        _scoreKeeper.add(Icon(
-          Icons.check,
-          color: Colors.green,
-        ));
-      } else {
-        _scoreKeeper.add(Icon(
-          Icons.close,
-          color: Colors.red,
-        ));
-      }
-      quizBrain.getNextQuestion();
-    });
+      setState(() {
+        if (answer == correctAnswer) {
+          _scoreKeeper.add(Icon(
+            Icons.check,
+            color: Colors.green,
+          ));
+        } else {
+          _scoreKeeper.add(Icon(
+            Icons.close,
+            color: Colors.red,
+          ));
+        }
+        _quizBrain.getNextQuestion();
+      });
+    }
   }
 
   @override
@@ -43,7 +78,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                quizBrain.getQuestionText(),
+                _quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
@@ -89,8 +124,14 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        Row(
-          children: _scoreKeeper,
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 5,
+            horizontal: 15,
+          ),
+          child: Row(
+            children: _scoreKeeper,
+          ),
         )
       ],
     );
