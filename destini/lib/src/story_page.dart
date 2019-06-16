@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'story_brain.dart';
+
 class StoryPage extends StatefulWidget {
+  final StoryBrain storyBrain;
+
+  StoryPage({Key key, @required this.storyBrain}) : super(key: key);
+
   @override
   _StoryPageState createState() => _StoryPageState();
 }
@@ -29,7 +35,7 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 12,
                 child: Center(
                   child: Text(
-                    'Story text will go here.',
+                    widget.storyBrain.getStory(),
                     style: TextStyle(
                       fontSize: 25,
                     ),
