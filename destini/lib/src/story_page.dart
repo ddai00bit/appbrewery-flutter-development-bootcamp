@@ -48,7 +48,7 @@ class _StoryPageState extends State<StoryPage> {
                   onPressed: () {},
                   color: Colors.red,
                   child: Text(
-                    'Choice 1',
+                    widget.storyBrain.getChoice1(),
                     style: TextStyle(
                       fontSize: 20,
                     ),
@@ -64,7 +64,7 @@ class _StoryPageState extends State<StoryPage> {
                   onPressed: () {},
                   color: Colors.blue,
                   child: Text(
-                    'Choice 2',
+                    widget.storyBrain.getChoice2(),
                     style: TextStyle(
                       fontSize: 20,
                     ),
