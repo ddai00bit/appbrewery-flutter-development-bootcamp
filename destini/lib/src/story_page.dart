@@ -45,7 +45,11 @@ class _StoryPageState extends State<StoryPage> {
               Expanded(
                 flex: 2,
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      widget.storyBrain.nextStory(1);
+                    });
+                  },
                   color: Colors.red,
                   child: Text(
                     widget.storyBrain.getChoice1(),
@@ -60,13 +64,20 @@ class _StoryPageState extends State<StoryPage> {
               ),
               Expanded(
                 flex: 2,
-                child: FlatButton(
-                  onPressed: () {},
-                  color: Colors.blue,
-                  child: Text(
-                    widget.storyBrain.getChoice2(),
-                    style: TextStyle(
-                      fontSize: 20,
+                child: Visibility(
+                  visible: widget.storyBrain.buttonShouldBeVisible(),
+                  child: FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        widget.storyBrain.nextStory(2);
+                      });
+                    },
+                    color: Colors.blue,
+                    child: Text(
+                      widget.storyBrain.getChoice2(),
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ),
