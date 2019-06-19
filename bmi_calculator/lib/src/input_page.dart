@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'constants.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
-
-const _bottomContainerHeight = 80.0;
-const _bottomContainerColor = Color(0xFFEB1555);
-const _activeCardColor = Color(0xFF1D1E33);
-const _inactiveCardColor = Color(0xFF111328);
 
 enum Gender {
   male,
@@ -37,8 +33,8 @@ class _InputPageState extends State<InputPage> {
                   flex: 2,
                   child: ReusableCard(
                     backgroundColor: _selectedGender == Gender.male
-                        ? _activeCardColor
-                        : _inactiveCardColor,
+                        ? activeCardColor
+                        : inactiveCardColor,
                     child: IconContent(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
@@ -54,8 +50,8 @@ class _InputPageState extends State<InputPage> {
                   flex: 2,
                   child: ReusableCard(
                     backgroundColor: _selectedGender == Gender.female
-                        ? _activeCardColor
-                        : _inactiveCardColor,
+                        ? activeCardColor
+                        : inactiveCardColor,
                     child: IconContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
@@ -72,7 +68,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              backgroundColor: _activeCardColor,
+              backgroundColor: activeCardColor,
             ),
           ),
           Expanded(
@@ -81,24 +77,24 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   flex: 2,
                   child: ReusableCard(
-                    backgroundColor: _activeCardColor,
+                    backgroundColor: activeCardColor,
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: ReusableCard(
-                    backgroundColor: _activeCardColor,
+                    backgroundColor: activeCardColor,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: _bottomContainerColor,
+            color: bottomContainerColor,
             margin: EdgeInsets.only(top: 10),
             child: Text(''),
             width: double.infinity,
-            height: _bottomContainerHeight,
+            height: bottomContainerHeight,
           ),
         ],
       ),
