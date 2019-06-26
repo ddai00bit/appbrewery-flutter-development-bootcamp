@@ -14,3 +14,8 @@ const numberTextStyle = TextStyle(
   fontSize: 50,
   fontWeight: FontWeight.w900,
 );
+
+const largeButtonTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.bold,
+);
