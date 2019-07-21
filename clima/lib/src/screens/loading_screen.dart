@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../constants.dart' as Constants;
+import '../keys.dart' as Keys;
 import '../location.dart';
 import '../network_helper.dart';
 import './location_screen.dart';
@@ -24,11 +24,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
     _location = await Location.getCurrentLocation();
 
     final helper = NetworkHelper(
-        'https://api.openweathermap.org/data/2.5/weather?lat=${_location.latitude}&lon=${_location.longitude}&appid=${Constants.apiKey}');
+        'https://api.openweathermap.org/data/2.5/weather?lat=${_location.latitude}&lon=${_location.longitude}&appid=${Keys.apiKey}&units=metric');
     final weatherData = await helper.getData();
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return LocationScreen();
+      return LocationScreen(
+        locationWeather: weatherData,
+      );
     }));
   }
 
