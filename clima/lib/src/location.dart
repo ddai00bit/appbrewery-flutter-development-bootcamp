@@ -19,7 +19,10 @@ class Location {
         longitude: position.longitude,
       );
     } catch (e) {
-      return null;
+      return Location._(
+        latitude: 0,
+        longitude: 0,
+      );
     }
   }
 }
