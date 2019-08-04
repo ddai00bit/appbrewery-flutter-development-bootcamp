@@ -1,3 +1,4 @@
+import 'package:flash_chat/src/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -39,7 +40,7 @@ class WelcomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
-                    //Go to login screen.
+                    Navigator.pushNamed(context, LoginScreen.ID);
                   },
                   minWidth: 200.0,
                   height: 42.0,
