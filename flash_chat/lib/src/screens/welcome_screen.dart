@@ -1,5 +1,7 @@
-import 'package:flash_chat/src/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'login_screen.dart';
+import 'registration_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   static const String ID = "welcome_screen";
@@ -58,7 +60,7 @@ class WelcomeScreen extends StatelessWidget {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                    //Go to registration screen.
+                    Navigator.pushNamed(context, RegistrationScreen.ID);
                   },
                   minWidth: 200.0,
                   height: 42.0,
