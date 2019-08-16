@@ -39,6 +39,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             TextField(
               textAlign: TextAlign.center,
+              textCapitalization: TextCapitalization.none,
               keyboardType: TextInputType.emailAddress,
               onChanged: (value) {
                 _email = value;
@@ -72,7 +73,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     email: _email,
                     password: _password,
                   );
-                  Navigator.pushNamed(context, ChatScreen.ID);
+                  if (newUser != null) {
+                    Navigator.pushNamed(context, ChatScreen.ID);
+                  }
                 } catch (e) {
                   print(e);
                 }
