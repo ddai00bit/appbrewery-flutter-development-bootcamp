@@ -21,10 +21,12 @@ class TasksList extends StatelessWidget {
       builder: (context, taskData, child) {
         return ListView.builder(
           itemBuilder: (context, index) {
+            final task = taskData.tasks[index];
             return TaskTile(
-              title: taskData.tasks[index].name,
-              isChecked: taskData.tasks[index].isDone,
+              title: task.name,
+              isChecked: task.isDone,
               onChecked: (newValue) => onChecked(index, newValue),
+              onLongPress: () => taskData.removeTask(task),
             );
           },
           itemCount: taskData.taskCount,
