@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-typedef CheckboxCallback = void Function(bool newValue);
-
 class TaskTile extends StatelessWidget {
   final String title;
   final bool isChecked;
-  final CheckboxCallback onChecked;
+  final ValueChanged<bool> onChecked;
   final GestureLongPressCallback onLongPress;
 
   TaskTile({

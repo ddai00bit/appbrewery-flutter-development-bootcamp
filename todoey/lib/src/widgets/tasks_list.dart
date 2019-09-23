@@ -25,7 +25,7 @@ class TasksList extends StatelessWidget {
             return TaskTile(
               title: task.name,
               isChecked: task.isDone,
-              onChecked: (newValue) => onChecked(index, newValue),
+              onChecked: (newValue) => taskData.toggleTask(task),
               onLongPress: () => taskData.removeTask(task),
             );
           },
